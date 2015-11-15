@@ -1,5 +1,5 @@
-# details
-Small foot-print blog platform
+# Details NanoBlog
+Small foot-print nano blog platform
 ## Overview
 * PHP, HTML5, Twitter Bootstrap, jQuery
 * Small foot-print blog platform
