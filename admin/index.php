@@ -9,6 +9,7 @@ include 'header.php';
 $page = "index";
 $title= "TSW-Details Admin Control Panel";
 ?>
+
 <style>.tab-pane{transition: .25s;}body{background: #e1e8e5;}.det-list-container table thead tr th {background: #e1e8e5 !important; }</style>
 <title><?php print($title); ?></title>
 </head>
@@ -92,7 +93,7 @@ $title= "TSW-Details Admin Control Panel";
                     </div><!-- ends tab-content -->
 
                 </div><!-- ends panel-body --> 
-            </div>
+            </div><!-- ends panel with tabs -->
 
 <script>
 // keeps panel open after submit
@@ -109,7 +110,9 @@ $(window).on('popstate', function() {
     $('a[href=' + anchor + ']').tab('show');
 });
 </script>
+
         </div><!-- ends col-12 -->
+        
     </div>
 </div>
 <?php include 'footer.php'; ?>
