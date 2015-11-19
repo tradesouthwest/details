@@ -64,15 +64,15 @@ if( isset( $_GET['id'] )){
 
 		            <div class="panel-rightbody" role="content">
                                 <div class="detail-item">
-                                    <?php echo $row['detail']; ?>
+                                    <?php esc( $row['detail'] ); ?>
                                 </div>
                             </div><div class="clearfix"></div>
                     <div class="panel-body">
 
                         <blockquote>
-                            <span class="note-text"><?php echo $row['note']; ?></span><br>
-                            <span class="dev-url"><?php echo $row['dev_url']; ?></span><br>
-                            <span class="date-in"><?php echo $row['date_in']; ?></span>
+                            <span class="note-text"><?php esc( $row['note'] ); ?></span><br>
+                            <span class="dev-url"><?php esc $row['dev_url'] ); ?></span><br>
+                            <span class="date-in"><?php esc $row['date_in'] ); ?></span>
                         </blockquote>
 
                     </div> 
