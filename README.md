@@ -1,5 +1,5 @@
-# Details NanoBlog
-Small foot-print nano blog platform
+# TSW Details Nano Blog
+
 ## Overview
 * PHP, HTML5, Twitter Bootstrap, jQuery
 * Small foot-print blog platform
@@ -19,15 +19,14 @@ Small foot-print nano blog platform
 ## Code Example
 Example of security measures using PDO and PHP5 var_filters
 ```
-$prv_pub = filter_var( 1,  FILTER_VALIDATE_INT);
-    // grab all non-private items from db
+$prv_pub = filter_var( 1,  FILTER_VALIDATE_INT );
+    //Grab all non-private items from db
     require_once 'inc/dbh.php';
-    $sql = "SELECT * FROM tsw_details WHERE prv = $prv_pub";
-    $result = $dbh->query($sql);
-        // Parse returned data, and displays them
-        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $idd_int = $row['idd']; if (!filter_var($idd_int, FILTER_VALIDATE_INT) === false) { 
-
+    $sql = "SELECT * FROM tsw_details WHERE prv = $prv_pub";  //Placeholder not used(integer clean)
+    $result = $dbh->query( $sql );
+        //Parse returned data, and displays them
+        while( $row = $result->fetch( PDO::FETCH_ASSOC )) {
+        $idd_int = $row['idd']; if( !filter_var( $idd_int, FILTER_VALIDATE_INT ) === false ) { 
 ```
 
 ## Motivation
@@ -35,14 +34,22 @@ Main motive is to advance the use of PHP out-of-the-box coding over MVC and fram
 
 ## Installation
 Very basic PHP Apache Server, LAMP style install:
-* create a database or just add the one table to an existing database
-* the table is in the `inc` directory; file named `sql.txt`
-* add settings in file `inc/settings.php` and connection in `inc/dbh.php`
+* Create a database or just add the tables to an existing database
+* The tables are in the `inc` directory; file named `sql.txt`
+* You may want to change the URL in `tsw_settings` before adding tables!!!
+* Add database connection credentials in `inc/dbh.php`
+* 
+* You can register as a new editor or use default in `inc/settings.php`
+* IMPORTANT!
+* Remember this is viewable on Github so you better change login ASAP
 
 demo: http://tradesouthwest.com/dev/details
 
 ## Contributors
 Open for contributions. 
+thanks http://jqueryte.com/ - jQuery TE
+thanks http://www.daveismyname.com PHP Pagination Class
+thanks Twitter Bootstrap 
 
 ## License
 Licensed under MIT License (MIT). 

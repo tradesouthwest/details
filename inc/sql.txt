@@ -1,0 +1,114 @@
+
+--
+-- Table structure for table `tsw_details`
+--
+
+CREATE TABLE IF NOT EXISTS `tsw_details` (
+  `idd` int(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(120) NOT NULL,
+  `website` varchar(250) NOT NULL,
+  `detail` text,
+  `dev_url` varchar(120) NOT NULL,
+  `note` varchar(250) NOT NULL,
+  `date_in` varchar(20) DEFAULT NULL,
+  `prv` int(4) NOT NULL DEFAULT '1',
+  `stat` int(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idd`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tsw_details`
+--
+
+INSERT INTO `tsw_details` (`idd`, `title`, `website`, `detail`, `dev_url`, `note`, `date_in`, `prv`, `stat`) VALUES
+(1, 'How To Install Linux, Apache', 'https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu', 'LAMP stack is a group of open source software used to get web servers up and running. The acronym stands for Linux, Apache, MySQL, and PHP. Since the virtual private server is already running Ubuntu, the linux part is taken care of. Here is how to install the rest.', '&gt;sudo apt-get update  - &gt;sudo apt-get install apache2', 'PHP5', '11/09/2015 00:46', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsw_extend_style`
+--
+
+CREATE TABLE IF NOT EXISTS `tsw_extend_style` (
+  `ide` int(6) NOT NULL AUTO_INCREMENT,
+  `headcolor` varchar(11) DEFAULT NULL,
+  `listcolor` varchar(11) DEFAULT NULL,
+  `backcolor` varchar(11) DEFAULT NULL,
+  `linkcolor` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`ide`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsw_members`
+--
+
+CREATE TABLE IF NOT EXISTS `tsw_members` (
+  `idm` int(11) NOT NULL AUTO_INCREMENT,
+  `phonenumber` varchar(65) DEFAULT NULL,
+  `firstname` varchar(65) NOT NULL DEFAULT '',
+  `lastname` varchar(65) NOT NULL DEFAULT '',
+  `email` varchar(250) NOT NULL,
+  `dateregistered` varchar(65) NOT NULL,
+  `level` tinyint(1) NOT NULL DEFAULT '1',
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `active` tinyint(1) DEFAULT '0',
+  `resetToken` varchar(255) DEFAULT NULL,
+  `resetComplete` varchar(3) DEFAULT 'No',
+  PRIMARY KEY (`idm`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tsw_members`
+--
+
+INSERT INTO `tsw_members` (`idm`, `phonenumber`, `firstname`, `lastname`, `email`, `dateregistered`, `level`, `username`, `password`, `active`, `resetToken`, `resetComplete`) VALUES
+(1, '555-555-5555', 'Admin', 'Director', 'admin@example.com', '11/11/2015', 1, 'director', '27792947ed5d5da7c0d1f43327ed9dab', 1, '', 'No');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsw_respond`
+--
+
+CREATE TABLE IF NOT EXISTS `tsw_respond` (
+  `idr` int(6) NOT NULL AUTO_INCREMENT,
+  `idd_is` int(11) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `respond` text,
+  `date_respond` varchar(20) DEFAULT NULL,
+  `prv` int(4) NOT NULL DEFAULT '1',
+  `stat` int(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`idr`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tsw_settings`
+--
+
+CREATE TABLE IF NOT EXISTS `tsw_settings` (
+  `ids` int(6) NOT NULL AUTO_INCREMENT,
+  `theme_url` varchar(250) NOT NULL,
+  `server_email` varchar(250) NOT NULL,
+  `det_name` varchar(250) NOT NULL,
+  `det_moniker` varchar(250) NOT NULL,
+  `readlink` varchar(250) NOT NULL,
+  `private` tinyint(4) NOT NULL DEFAULT '0',
+  `theme` varchar(60) NOT NULL DEFAULT 'index_cards',
+  `noreply` tinyint(4) NOT NULL DEFAULT '0',
+  `sortby` tinyint(4) NOT NULL DEFAULT '0',
+  `paginate` int(6) NOT NULL DEFAULT '12',
+  PRIMARY KEY (`ids`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tsw_settings`
+--
+
+INSERT INTO `tsw_settings` (`ids`, `theme_url`, `server_email`, `det_name`, `det_moniker`, `readlink`, `private`, `theme`, `noreply`, `sortby`, `paginate`) VALUES
+(1, '/', 'notify@example.com', 'Details NanoBlog', 'Details Dev App - Limited but Flexible', 'onward', 1, 'index_cards', 0, 0, 12);

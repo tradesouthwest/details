@@ -1,0 +1,279 @@
+/**
+ =|= Details NanoCMS =|=
+ * Author: Larry Judd Oliver @tradesouthwest =|= http://tradesouthwest.com
+ * Contributors in readme.md file
+ * License in LICENSE.md file
+ * style-sheet requires Bootstrap 3.0 or higher
+ */ 
+/* Theme
+======================================== */
+#detail-article{
+    background:       rgb( 250, 253, 251);
+    box-shadow:       0px 0px 2px rgba(0, 0, 0, .15);
+    min-height:       286px;
+    padding-top:      4px;
+    //padding-bottom:   5px;
+}
+#detail-article:nth-of-type(4):after{
+    clear:            both;
+}
+#detail-article .list-group:last-child {
+    border-bottom:    1px solid #ddd; 
+}
+#detail-article .list-group {
+    max-height:       266px;
+    margin:           10px auto;
+    overflow:         hidden; 
+}
+.list-group-item {
+    line-height:      .8582;
+    padding:          10px;
+}
+
+#detail-article .list-group-item {
+    line-height:      1.125;
+    max-height:       3.875em;
+    margin-right:     16px;
+    padding-top:      4px;
+    padding-bottom:   3px;
+    overflow:         hidden;
+    width:            100%;
+}
+#text_line {
+    background:       #fffff9;
+    padding-top:      3px !important;
+}
+
+#detail-article i.fa  {
+    font-size:        1rem;
+    color:            #e1e1e1;
+    position:         absolute;
+    right:            .825rem;
+    top:              5px;
+}
+#det-header {
+     color:           rgb(64,124,194);
+     border-bottom:   1px solid rgb(205,205,215);
+}
+#det-header:hover {
+    text-decoration:  none;
+    color:            blue;
+}
+#detail-article #det-header i.fa.fa-spec {
+    /* eye in title */
+    font-size:        1.67rem;
+    position:         absolute;
+    top:              3px;
+    right:            6px;
+    padding:          3px;
+    color:            rgb(64,124,194);
+    box-shadow:       2px 2px 3px rgba(205,205,215, .9);
+    background:       #fff;
+    border-radius:    55px;
+}
+#detail-article a#website_url  {
+    max-width:        210px;
+    display:          block;
+    overflow:         hidden;
+    margin:           0;
+    font-size:        .825em;
+    clear:            right;
+    white-space:      nowrap;
+}
+#detail-article i.fa-det-link {
+    /* position external-link icon */
+    position:         absolute;
+    right:            8px;
+    top:              4px;
+}
+.detail-item a {
+    padding-bottom:   0;
+    margin-bottom:    1px;
+}
+.datein {
+    font-size:        1.24rem;
+    color:            #777;
+    margin-bottom:    -1px;
+}
+.footer {
+    /* Set the fixed height of the footer here */
+    padding:          10px;
+    min-height:       80px;
+    background-color: rgb(248, 248, 248);
+}
+.det-list-container table thead tr th {
+    border-right:     1px dotted white; 
+    padding-left:     9px;
+    font-weight:      300; 
+    background:       #affafa !important;
+}
+.det-list-container table td {
+    font-size:        1em;
+    max-width:        200px;
+    overflow:         hidden;
+    text-overflow:    ellipsis;
+    white-space:      nowrap;
+    padding:          0 10px;
+}
+h1#nav-header-title {
+    font-size:        26px;
+    text-align:       right;
+    text-shadow:      0px 1px 2px #fafafa;
+}
+
+#grad-menu li a {
+    background-image: linear-gradient(#efefef, #fcfcfc, #ececec);
+    margin:           8px 2px 0 0;
+    border:           thin solid #ddd;
+    border-radius:    5px; 
+    padding:          11px;
+    font-weight:      400;
+}
+.grad-anchor{
+    color:            #2d2d2d !important;
+    text-shadow:      0px 0px 5px #ffffff !important;
+}
+#grad-menu a:hover{
+    color:            royalblue !important;
+}
+.navbar.navbar-default {
+    background-color: rgb(248, 248, 248);
+}
+.navbar-brand img{
+    height:           42px;
+    position:         relative; 
+    top:              -.412em;
+}
+
+#btn-link {
+    min-width:        48px;
+}
+
+.pagination {
+    width:            100%;
+    padding:          2px 3px;
+    background-color: #739993;
+}
+.pagination li a,
+.pagination li span {
+    margin: 1px; 
+    border: 1px solid #e8e8e8;
+}
+.panel-leftheading {
+    width: 42px;
+    padding: 10px 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 7px;
+    float: left;
+    height: auto;
+    position: absolute;
+    margin-top: 10px;
+    margin-bottom: 0px;  
+    background-color: rgb( 247, 250, 248 );
+    color: #084
+}
+#panel-leftheading-2 {
+    margin-top: 0;
+}
+.panel-lefttitle {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.panel-rightbody {
+    float: left;
+    margin-left: 45px;
+    padding: 10px;
+    margin-top: 0;
+}
+.panel-title {
+    font-size: 1.75em;
+    color: #084;
+}
+header.panel-heading {
+    background-color: rgb( 250, 253, 251) !important;
+}
+footer.panel-footer {
+    background-color: rgb( 253, 251, 243) !important;
+}
+blockquote {
+    font-size: .938em;
+    font-style: italic;
+    font-weight: 400;
+    color: #626262;
+}
+.btn#wrap-text {
+    word-wrap: break-word; 
+    white-space: normal !important;
+    text-align: left;
+}
+#respond-panel i.fa {
+    color: #084;
+}
+.btn.btn-natural { 
+    background-color: #608f99;   
+    color: #ffffff; 
+    padding: 6px 12px;
+}
+#responses .container { max-width: 100%; display: block;}
+#respond-panel{ margin: 1px auto; display: block; border: thin solid #fafafa; padding: 10px;}
+#respond-panel .fa {margin-right: 12px; padding-bottom: 0; color: #91a8b5;}
+.detail-item-respond{ border-left: 3px solid #e8e8e8;padding-left: 20px;  }
+
+/* Magic for four box blocks
+======================================== */
+    @media screen and (max-width: 34em) 
+/* Used for computer screens, tablets, smart-phones etc. */ { 
+        .col-sm-6 {
+            margin-left: 1.25rem; 
+        #nav-header-title {
+            text-align: center !important;
+            float: none !important;
+        }
+    }
+
+/* Helpers
+======================================== */
+#details-panel hr {
+    display: block;
+    padding-top: 10px;
+    float: left;
+}
+.blank-spc {
+    color: transparent;
+}
+.btn#wrap-text {
+    word-wrap: break-word; 
+    white-space: normal !important;
+    text-align: left;
+}
+span.ruler {
+    width: 98%;
+    margin: 0 auto;
+    height: 1px;
+    display: block;
+    border-bottom: thin solid #ddd;
+
+clear: both;
+}
+.short {
+ 
+    max-width:        160px;
+    overflow:         hidden;
+    white-space:      nowrap;
+    word-wrap:        normal;
+}
+.textcenter{ 
+    text-align:       center !important;
+}
+
+.nopadding {
+    padding:          0 !important;
+    margin:           0 !important;
+    padding-top:      5px !important;
+}
+#detailsSearch{
+    margin:           4.4% 12px;
+}
+
