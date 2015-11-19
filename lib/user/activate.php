@@ -25,9 +25,7 @@ $title= 'TSW-Login';
                 <div class="col-lg-12">
 
 <?php
-
 include 'tsw_activate.php';
-
 ?>
 
                    <h1 class="page-header">Registration Complete!<h1>
@@ -45,8 +43,8 @@ include 'tsw_activate.php';
  
                 <div class="col-lg-6">
                     <h1 class="section-heading">Details</h1>
-                
                 </div>
+                
             </div><!-- /.row -->
         </div><!-- /.container -->
 
