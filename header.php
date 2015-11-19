@@ -5,6 +5,7 @@
  * Contributors in readme.md file
  * License in LICENSE.md file
  */
+ 
 require_once 'inc/controls.php';
 require_once 'inc/settings.php';
 ?>
