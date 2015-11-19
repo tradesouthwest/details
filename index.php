@@ -27,10 +27,10 @@ include 'header.php';
         </div>
     </div>
 
+<!--========== Page Content ========-->
     <div class="container">
         <div class="row">
-<!--========== Page Content ========-->
-
+            
             <?php 
             // grab the value of sortby state 
             $sql="SELECT sortby FROM tsw_settings"; 
