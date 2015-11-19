@@ -25,8 +25,8 @@ include 'header.php';
 <?php
 
 if (isset($_POST['respond'])) {
-    $respond_to = filter_var($_POST['respond_to'], FILTER_SANITIZE_STRING);    // title of article
-    $idd_is     = filter_var($_POST['idd_is'],  FILTER_VALIDATE_INT);         // numeric id of article
+    $respond_to = filter_var( $_POST['respond_to'], FILTER_SANITIZE_STRING );    // title of article
+    $idd_is     = filter_var( $_POST['idd_is'],  FILTER_VALIDATE_INT );         // numeric id of article
 } ?>
 
         <h3 class="page-header"><small>Add Response to: <?php
@@ -39,7 +39,7 @@ $idd_is       = filter_var( $_POST['idd_is'],  FILTER_VALIDATE_INT );
 $name         = filter_var( $_POST['name'],    FILTER_SANITIZE_STRING ); 
 $email        = filter_var( $_POST['email'],   FILTER_VALIDATE_EMAIL );
 $respond      = filter_var( $_POST['respond'], FILTER_SANITIZE_STRING ); 
-$date_inis    = date('m/d/Y H:i');
+$date_inis    = date( 'm/d/Y H:i' );
 $date_respond = filter_var( $date_inis, FILTER_SANITIZE_STRING ); 
 
 require_once 'inc/dbh.php';
@@ -48,17 +48,17 @@ require_once 'inc/dbh.php';
                     ( idd_is, name, email,  respond, date_respond ) 
             VALUES ( :idd_is, :name, :email, :respond, :date_respond )";
 
-    //Prepare our statement.
+    //Prepare each statement.
     $stmt = $dbh->prepare($sql);
 
     //Bind the values to the parameters 
-    $stmt->bindValue(':idd_is',   $idd_is);
-    $stmt->bindValue(':name',      $name);
-    $stmt->bindValue(':email',      $email);
-    $stmt->bindValue(':respond',     $respond);
-    $stmt->bindValue(':date_respond', $date_respond);
+    $stmt->bindValue( ':idd_is',   $idd_is );
+    $stmt->bindValue( ':name',      $name );
+    $stmt->bindValue( ':email',      $email );
+    $stmt->bindValue( ':respond',     $respond );
+    $stmt->bindValue( ':date_respond', $date_respond );
 
-    //Execute the statement and insert our values.
+    //Execute the statement and insert values.
     $inserted = $stmt->execute();
     if( $inserted ){
 ?>
@@ -72,7 +72,7 @@ require_once 'inc/dbh.php';
 
             <?php print date('m-d-Y H:m'); ?>
 
-            <p><a href="details.php?id=<?php esc($idd_is); ?>" title="back to article" class="btn btn-success">Back to Article</a></p>
+            <p><a href="details.php?id=<?php esc( $idd_is ); ?>" title="back to article" class="btn btn-success">Back to Article</a></p>
         </div>
     </div>            
     <br><div class="clearfix"</div>
@@ -85,8 +85,8 @@ require_once 'inc/dbh.php';
 <?php
     }
     else {
-        print ("Please retry");
-        print_r($inserted->errorInfo());
+        print ( "Please retry" );
+        print_r( $inserted->errorInfo() );
     }
 }
 
