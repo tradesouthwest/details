@@ -1,4 +1,4 @@
-
+-- theme_url should be changed before adding tabel (last table)
 --
 -- Table structure for table `tsw_details`
 --
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `tsw_settings` (
 
 --
 -- Dumping data for table `tsw_settings`
---
+-- theme_url should be changed before adding tabel
 
 INSERT INTO `tsw_settings` (`ids`, `theme_url`, `server_email`, `det_name`, `det_moniker`, `readlink`, `private`, `theme`, `noreply`, `sortby`, `paginate`) VALUES
 (1, '/', 'notify@example.com', 'Details NanoBlog', 'Details Dev App - Limited but Flexible', 'onward', 1, 'index_cards', 0, 0, 12);
