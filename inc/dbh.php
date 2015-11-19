@@ -5,7 +5,7 @@ $db_name = 'XXXXXXXX';
 $db_user = 'XXXXXXXX';
 $db_pass = 'XXXXXXXX';
 
-// connect with pdo 
+// connect with pdo - comment line 11 to mute errors
 try {
 	$dbh = new PDO("mysql:host=$db_host;dbname=$db_name;", $db_user, $db_pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
