@@ -10,15 +10,11 @@ include 'header.php';
 ?>
 
 <title>Dev App for Looping Details</title>
-<style>
-.no-wrapcell{ 
-    max-width: 350px;
-}
-</style>
+<style>.no-wrapcell{ max-width: 350px; }</style>
 </head>
 <body>
 
-<?php include 'nav.php'; ?>
+<?php include 'nav.php'; ?><div class="clearfix"></div>
 
 <div class="container">
     <div class="row">
@@ -39,8 +35,9 @@ include 'header.php';
 // go if form was submitted. 
 if( isset( $_POST['submit_search'] )) {
    
-    // grab all related items from db
     require_once 'inc/dbh.php';
+    
+    // grab all related items from db
     $search=$_POST['search'];
     $query = $dbh->prepare("select * from tsw_details where title LIKE '%$search%' OR detail LIKE '%$search%'  LIMIT 0 , 10");
     $query->bindValue(1, "%$search%", PDO::PARAM_STR);
@@ -77,7 +74,7 @@ if( isset( $_POST['submit_search'] )) {
                         <th><span>date in</span></th></tr> </thead><tbody>
 
 <?php
-    $prv_pub = filter_var( 1,  FILTER_VALIDATE_INT);
+    $prv_pub = filter_var( 1,  FILTER_VALIDATE_INT );
 
     // grab all non-private items from db
     require_once 'inc/dbh.php';
@@ -85,19 +82,19 @@ if( isset( $_POST['submit_search'] )) {
     $result = $dbh->query($sql);
 
         // Parse returned data, and displays them
-        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        while( $row = $result->fetch(PDO::FETCH_ASSOC) ) {
 
             $idd_int = $row['idd']; 
             // make sure result is an interger
-            if (!filter_var($idd_int, FILTER_VALIDATE_INT) === false) { 
+            if ( !filter_var( $idd_int, FILTER_VALIDATE_INT ) === false) { 
 ?>
 
 <tr>
-    <td><a class="btn btn-default btn-xs" id="btn-link" href="details.php?id=<?php echo $idd_int; ?>" title="view"> view </a></td>   
+    <td><a class="btn btn-default btn-xs" id="btn-link" href="details.php?id=<?php esc( $idd_int ); ?>" title="view"> view </a></td>   
     <td><?php print( $row['title'] ); ?></td>
     <td><?php print( $row['website'] ); ?></td>
     <td><?php print( $row['date_in'] ); ?></td></tr>
-<?php } else { print("No xss Please!"); } ?> 
+<?php } else { print( "No xss Please!" ); } ?> 
 
 <?php } ?>
                 </tbody></table>
