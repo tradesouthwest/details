@@ -1,3 +1,12 @@
+<?php
+/**
+ * TSW Details NanoBlog
+ * Author: Larry Judd Oliver @tradesouthwest | http://tradesouthwest.com/details
+ * Contributors in readme.md file
+ * License in LICENSE.md file
+ */
+ // documentation is not supported as of November 2015 - coming soon
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
