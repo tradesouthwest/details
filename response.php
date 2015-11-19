@@ -13,7 +13,7 @@
 
     //require_once 'inc/dbh.php';
     $stmt = $dbh->prepare('SELECT * FROM tsw_respond WHERE idd_is = :idd_is AND prv = :prv_int');
-        if( $stmt->execute( array(':idd_is' => $idd_is, ':prv_int' => $prv_int ))) {
+        if( $stmt->execute( array( ':idd_is' => $idd_is, ':prv_int' => $prv_int ) )) {
             // loop all open responses 
             while( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
 ?>
@@ -26,9 +26,8 @@
                 <div class="col-sm-8 pull-right"> 
                     <div class="detail-item-respond">
                             
-                        <p><?php echo $row['respond']; ?></p>
+                        <p><?php esc( $row['respond'] ); ?></p>
                         
-
                     </div> 
                 </div>
             </li>
