@@ -44,6 +44,7 @@ Very basic PHP Apache Server, LAMP style install:
 * Remember this is viewable on Github so you better change login ASAP
 
 demo: http://tradesouthwest.com/dev/details
+uri: http://tradesouthwest.com/apps/details/
 
 ## Contributors
 Open for contributions. 
