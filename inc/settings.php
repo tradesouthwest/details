@@ -7,6 +7,7 @@
  *
  * **** the default cp login is ****
  * name= `director` pass= `details`
+ * Change ASAP
  */
 
 // settings grabbed from table `tsw_settings`
