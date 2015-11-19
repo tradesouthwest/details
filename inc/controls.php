@@ -1,9 +1,12 @@
 <?php
 /**
- * Details
- * Tradesouthwest
+ * TSW Details NanoBlog
+ * Author: Larry Judd Oliver @tradesouthwest | http://tradesouthwest.com/details
+ * Contributors in readme.md file
+ * License in LICENSE.md file
  */
-// settings
+ 
+// settings - functions - filters
 
 function esc($s){
     echo htmlspecialchars_decode($s, ENT_HTML5);
