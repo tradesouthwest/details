@@ -36,7 +36,7 @@ Main motive is to advance the use of PHP out-of-the-box coding over MVC and fram
 Very basic PHP Apache Server, LAMP style install:
 * Create a database or just add the tables to an existing database
 * The tables are in the `inc` directory; file named `sql.txt`
-* You may want to change the URL in `tsw_settings` before adding tables!!!
+* ** Change the URL in `tsw_settings` sql table BEFORE adding tables!!! **
 * Add database connection credentials in `inc/dbh.php`
 * 
 * You can register as a new editor or use default in `inc/settings.php`
