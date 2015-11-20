@@ -36,7 +36,7 @@ $prv       = $_POST['prv'];
 $date_inis = date('m/d/Y H:i');
 $date_in   = $date_inis;
 
-require_once 'inc/dbh.php';
+require_once '../inc/dbh.php';
 
     $sql = "INSERT INTO tsw_details 
                     ( title, website,  detail,  dev_url,  note,  prv,  date_in ) 
