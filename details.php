@@ -71,8 +71,8 @@ if( isset( $_GET['id'] )){
 
                         <blockquote>
                             <span class="note-text"><?php esc( $row['note'] ); ?></span><br>
-                            <span class="dev-url"><?php esc $row['dev_url'] ); ?></span><br>
-                            <span class="date-in"><?php esc $row['date_in'] ); ?></span>
+                            <span class="dev-url"><?php esc ( $row['dev_url'] ); ?></span><br>
+                            <span class="date-in"><?php esc ( $row['date_in'] ); ?></span>
                         </blockquote>
 
                     </div> 
