@@ -10,8 +10,8 @@
     if( $stmt) {
         while ($row = $stmt->fetch()) {
 ?>
-    <div id="det-panels">
-        <form name="editform" id="editForm" method="POST" action="pref-update.php">
+<div id="det-panels">
+    <form name="editform" id="editForm" method="POST" action="pref-update.php">
         <div class="col-md-6"> 
             <div class="form-group">
                 <label for=""><i class="fa fa-home"></i> theme_url <em class="marg-r2 text-r"> SET NEW VALUES </em></label>
@@ -96,9 +96,9 @@
                     <span class="pull-right"><a href="index.php" title="back to admin" class="btn btn-danger">Cancel</a></span></p>
                   </div>
                 </div>
-            </div>
-        </form>
-    </div>
+            </div><!-- ends right half -->
+    </form>
+</div>
 <?php  
    } 
 } else { print("Could not get id of item"); }
