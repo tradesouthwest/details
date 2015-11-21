@@ -100,7 +100,7 @@ require_once '../inc/dbh.php';
                     <label for="detail">detail </label><br>
 
 <!-- ============ WYSIWYG Editor -->                
-                    <textarea name="textarea" class="jqte-text" name="detail"></textarea>
+                    <textarea class="jqte-text" name="detail"></textarea>
 <script>
 
 /** calls the jquery text editor script
