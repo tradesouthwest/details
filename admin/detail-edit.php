@@ -1,12 +1,19 @@
-<?php include 'header.php'; ?>
+<?php 
+/**
+ * TSW Details NanoBlog
+ * Author: Larry Judd Oliver @tradesouthwest | http://tradesouthwest.com/details
+ * Contributors in readme.md file
+ * License in LICENSE.md file
+ */
+
+include 'header.php'; 
+?>
+
+    <link type="text/css" rel="stylesheet" href="../lib/jtedit/jquery-te-1.4.0.css">
+    <style>textarea{margin-left: 0;}label[for=detail]{padding-left: 20px;}</style>
+    <script type="text/javascript" src="../lib/jtedit/jquery-te-1.4.0.min.js" charset="utf-8"></script>
+
 <title>Admin Details NanoCMS</title>
-<script type="text/javascript" src="../lib/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript">
-        tinymce.init({
-            selector: "#det_textarea"
-        });
-    </script>
-<style>#editForm #det_texarea {font-size: initial;} </style>
 </head>
 <body>
 
@@ -44,11 +51,18 @@ if( isset( $_POST['submit_edit'] )){
 
 
                     <label for="detail">detail</label><br>
+<!-- ============ WYSIWYG Editor -->                
+                    <textarea class="jqte-text" name="detail"><?php esc( $row['detail'] ); ?></textarea>
+<script>
 
-                    <textarea id="det_textarea" class="form-control" name="detail" rows="10"><?php echo $row['detail']; ?></textarea>
+/** calls the jquery text editor script
+ *  class name is assignable to textarea
+ */
+    $('.jqte-text').jqte(); 
 
+</script>
                     <p><label for="website">website</label><br>
-                      <input class="form-control" name="website" type="url" value="<?php echo $row['website']; ?>"></p>
+                      <input class="form-control" name="website" type="url" value="<?php esc( $row['website'] ); ?>"></p>
 
                     <p><label for="dev_url">link to image or alt site</label><br>
                       <input class="form-control" name="dev_url" type="text" value="<?php esc( $row['dev_url'] ); ?>"></p>
