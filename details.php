@@ -8,7 +8,7 @@
 require 'header.php'; 
 ?>
 <title>Dev App for Looping Details</title>
-
+<style> div.detail-item{font-size: initial;} </style>
 </head>
 <body>
 <?php include 'nav.php'; ?>
@@ -51,9 +51,12 @@ if( isset( $_GET['id'] )){
                     <div class="detail-item">
 
                     <?php if( !empty( $row['website']) ) : ?>
-                        <a href="<?php esc( $row['website'] ); ?>" title="opens in new window" class="btn btn-link col-lg-12" id="wrap-text" target="_blank"><?php echo $row['website']; ?></a>
+                    
+                        <a href="<?php esc( $row['website'] ); ?>" title="opens in new window" class="btn btn-link col-lg-12" id="wrap-text" target="_blank"><?php esc( $row['website'] ); ?></a>
+                        
                     <?php else : ?>
                         <a href="javascript: void(0)" title="no url"><span class="blank-spc"> &nbsp; </span></a>
+                        
                     <?php endif; ?>
 
                     </div> 
@@ -64,7 +67,9 @@ if( isset( $_GET['id'] )){
 
 		            <div class="panel-rightbody" role="content">
                                 <div class="detail-item">
+                                	
                                     <?php esc( $row['detail'] ); ?>
+                                    
                                 </div>
                             </div><div class="clearfix"></div>
                     <div class="panel-body">
