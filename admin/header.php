@@ -119,7 +119,7 @@ input[type="text"]:focus {
 }
 
 .sm-header{ text-shadow: 0 1px 1px #555; text-align: center;color: white;position: relative; top: -10px; 
-    background: #709fa9;height: auto;padding: 0 8px 8px 8px; margin: 0 auto; box-shadow: 0 1px 1px #999; }
+    background: #608f99; height: auto;padding: 0 8px 8px 8px; margin: 0 auto; box-shadow: 0 1px 1px #999; }
 .no-well-top{ padding-top:0 !important;margin-top:0 !important;position: relative; top:-1px; }
 .no-well-bottom{padding-bottom:0 !important;margin-bottom:0 !important; }
 i.fa { color: #739993;background-color: #fafafa; padding: 2px; border-radius: 3px;box-shadow: 0 0 2px #888;margin-right: 5px; }
