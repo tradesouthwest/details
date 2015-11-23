@@ -36,6 +36,10 @@ if( isset( $_GET['id'] )){
                            WHERE idd = ?");
     if( $stmt->execute( array( $_GET['id'] ))) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // save these two values as string for form 'respondform'
+        $idd = $row['idd'];
+        $title = $row['title'];
 ?>
 
 <!--========== Custom details panels inside Boots panels ==========-->
@@ -102,8 +106,8 @@ if( isset( $_GET['id'] )){
 
                         <form action="respond.php" method="POST" name="respondform">
                             <input type="submit" name="respond" class='btn btn-default btn-sm' value="Respond">
-                            <input type="hidden" name="idd_is" value="<?php esc( $row['idd'] ); ?>">
-                            <input type="hidden" name="respond_to" value="<?php esc( $row['title'] ); ?>">
+                            <input type="hidden" name="idd_is" value="<?php esc( $idd ); ?>">
+                            <input type="hidden" name="respond_to" value="<?php esc( $title ); ?>">
                         </form>
 <!--========== Responses Section ==========-->
 
