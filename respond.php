@@ -29,8 +29,7 @@ if (isset($_POST['respond'])) {
     $idd_is     = filter_var( $_POST['idd_is'],  FILTER_VALIDATE_INT );         // numeric id of article
 } ?>
 
-        <h3 class="page-header"><small>Add Response to: <?php
-esc($respond_to); ?></small></h3>
+        <h3 class="page-header"><small>Add Response to: <?php esc( $respond_to ); ?></small></h3>
 
 <?php
 
@@ -116,9 +115,9 @@ require_once 'inc/dbh.php';
             
             </div>
             <div class="form-group">
-                <label for="detail" class="control-label">detail </label><br>
+                <label for="detail" class="control-label">respond </label><br>
 
-                <textarea name="respond" class="form-control" name="detail"></textarea>
+                <textarea name="respond" class="form-control" name="respond"></textarea>
 
             </div>   
             <div class="form-group">
