@@ -7,12 +7,8 @@
  */ 
 include 'header.php'; 
 ?>
-  <!-- JQueryTE plugin for jQuery editor http://jqueryte.com/ styles and javascript -->
-  <link type="text/css" rel="stylesheet" href="lib/jtedit/jquery-te-1.4.0.css">
-  <style>textarea{margin-left: 0;}.control-label{padding-left: 20px;}</style>
-  <script type="text/javascript" src="lib/jtedit/jquery-te-1.4.0.min.js" charset="utf-8"></script>
-
   <title>Dev App for Looping Details</title>
+  <style>form{margin-left: 16px;}.control-label{padding-left: 8px;}</style>
 </head>
 <body>
 
@@ -20,7 +16,7 @@ include 'header.php';
 
 <div class="container">
     <div class="row">
-        <header class="col-md-12 text-center">
+        <header class="col-md-12">
 
 <?php
 
