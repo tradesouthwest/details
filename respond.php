@@ -67,7 +67,7 @@ require_once 'inc/dbh.php';
 
             <?php print date('m-d-Y H:m'); ?>
 
-            <p><a href="details.php?id=<?php esc( $idd_is ); ?>" title="back to article" class="btn btn-success">Back to Article</a></p>
+            <hr><p><form action="details.php?id=<?php esc( $idd_is ); ?>" method="POST"><input type="button" class='btn btn-success' onclick="submit()" name="success" value="BACK to Article"></form></p>
         </div>
     </div>            
     <br><div class="clearfix"</div>
