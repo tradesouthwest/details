@@ -98,13 +98,13 @@ require_once '../inc/dbh.php';
 
 <?php
 /** get the last (current) settings for styles
- *  default is fafafa
  *  @rows of last entry 
  */
    $stmt = $dbh->prepare("SELECT * FROM tsw_extend_style ORDER BY ide DESC LIMIT 1");
    $stmt->execute(); 
        if( $stmt !==false ) {
            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           $ide        = $row['ide'];
            $headcolor  = $row['headcolor'];
            $listcolor  = $row['listcolor'];
            $backcolor  = $row['backcolor'];
