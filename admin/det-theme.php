@@ -94,7 +94,25 @@ require_once '../inc/dbh.php';
 <!--========== RIGHT HALF ==========-->       
             <div class="col-md-6 col-xs-12"> 
 
-            <form name="editform" id="editForm" method="POST" action="extentions.php">
+            <form name="editform" id="editForm" method="POST" action="extend-style.php">
+
+<?php
+/** get the last (current) settings for styles
+ *  default is fafafa
+ *  @rows of last entry 
+ */
+   $stmt = $dbh->prepare("SELECT * FROM tsw_extend_style ORDER BY ide DESC LIMIT 1");
+   $stmt->execute(); 
+       if( $stmt !==false ) {
+           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+           $headcolor  = $row['headcolor'];
+           $listcolor  = $row['listcolor'];
+           $backcolor  = $row['backcolor'];
+           $linkcolor  = $row['linkcolor'];
+           }  
+       }
+?>
+
                 <div class="form-group">
                     <label for="theme"><i class="fa fa-columns"></i> Theme is</label>
 
@@ -125,8 +143,8 @@ require_once '../inc/dbh.php';
                         </div><div class="clearfix"></div>
                 </div>
                 <div class="form-group">
-                    <input name="nonce" type="hidden" value="1a2b3c4d5e">
-                    <input name="ids" type="hidden" value="<?php esc( $ids ); ?>">
+                    <input name="nonce" type="hidden" value="1a2b3c4d5f">
+                    <input name="ide" type="hidden" value="<?php esc( $ide ); ?>">
                     <label for="submit_hexc"><i class="fa fa-cog"></i> Update Theme Preferences</label> 
 
                     <span class="textcenter"><input type="submit" name="submit_hexc" value="Update Theme" class="btn btn-natural"></span>
