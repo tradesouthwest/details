@@ -1,4 +1,10 @@
 <?php 
+session_start();
+if (!isset($_SESSION['user_session']))
+{
+header('Location: ../lib/user/login.php');
+}
+
 /**
  * TSW Details NanoBlog
  * Author: Larry Judd Oliver @tradesouthwest | http://tradesouthwest.com/details
