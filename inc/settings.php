@@ -13,7 +13,7 @@
 // settings grabbed from table `tsw_settings`
  
     require_once 'dbh.php';
-    $dver = "1.1.0";
+    $dver = "1.0.5";
     $stmt = $dbh->prepare("SELECT * FROM tsw_settings ORDER BY ids DESC LIMIT 1");
     $stmt->execute(); 
     if( $stmt) {
