@@ -1,26 +1,101 @@
 name: PHPCS
-on: push
-jobs: 
-  build:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: checkout repo
-        uses: actions/checkout@v3
-      - name: use node.js
-        uses: actions/setup-node@v3
+
+on:
+  # Run on pushes to all branches except the main branches.
+  push:
+    branches-ignore:
+      - 3.x
+      - 4.x
+    paths-ignore:
+      - '**.md'
+  # Allow manually triggering the workflow.
+  workflow_dispatch:
+
+# Cancels all previous workflow runs for the same branch that have not yet completed.
+concurrency:
+  # The concurrency group contains the workflow name and the branch name.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  #### QUICK TEST ####
+  # This is a much quicker test run which only runs the unit tests against the low/medium/high
+  # supported PHP versions and skips the PHAR test.
+  # These are basically the same builds as in the Test->Coverage workflow, but then without doing
+  # the code-coverage.
+  quicktest:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: ['ubuntu-24.04-arm', 'windows-latest']
+        php: ['7.2', '8.1', 'latest']
+
+    name: "QuickTest: PHP ${{ matrix.php }} (${{ matrix.os == 'windows-latest' && 'Win' || 'Linux ARM' }})"
+
+    steps:
+      - name: Prepare git to leave line endings alone
+        run: git config --global core.autocrlf input
+
+      - name: Checkout code
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
         with:
-          node-version: '18.x'
-      - run: npm install
-      - run: npm run build 
-  test: 
-    needs: build
-    runs-on: ubuntu-latest
-    steps: 
-      - name: checkout repo
-        uses: actions/checkout@v3
-      - name: use node.js
-        uses: actions/setup-node@v3
+          php-version: ${{ matrix.php }}
+          ini-values: 'error_reporting=-1, display_errors=On, display_startup_errors=On'
+          coverage: none
+
+      # Install dependencies and handle caching in one go.
+      # @link https://github.com/marketplace/actions/install-php-dependencies-with-composer
+      - name: Install Composer dependencies
+        uses: "ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520" # 3.1.1
         with:
-          node-version: '18.x'
-      - run: npm install
-      - run: npm test
+          # Bust the cache at least once a month - output format: YYYY-MM.
+          custom-cache-suffix: $(date -u "+%Y-%m")
+
+      - name: Grab PHPUnit version
+        id: phpunit_version
+        shell: bash
+        # yamllint disable-line rule:line-length
+        run: echo "VERSION=$(php "vendor/bin/phpunit" --version | grep --only-matching --max-count=1 --extended-regexp '\b[0-9]+\.[0-9]+')" >> "$GITHUB_OUTPUT"
+
+      - name: "DEBUG: Show grabbed version"
+        run: echo ${{ steps.phpunit_version.outputs.VERSION }}
+
+      - name: Determine PHPUnit config file to use
+        id: phpunit_config
+        shell: bash
+        run: |
+          if [ "${{ startsWith( steps.phpunit_version.outputs.VERSION, '11.' ) }}" == "true" ]; then
+            echo 'FILE=phpunit.xml.dist' >> "$GITHUB_OUTPUT"
+          elif [ "${{ startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}" == "true" ]; then
+            echo 'FILE=phpunit.xml.dist' >> "$GITHUB_OUTPUT"
+          else
+            echo 'FILE=phpunit-lte9.xml.dist' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 'PHPCS: set the path to PHP'
+        run: php "bin/phpcs" --config-set php_path php
+
+      - name: 'PHPUnit: run the full test suite'
+        if: ${{ matrix.os != 'windows-latest' }}
+        run: php "vendor/bin/phpunit" -c ${{ steps.phpunit_config.outputs.FILE }} --no-coverage
+
+      - name: 'PHPUnit: run tests which may have different outcomes on Windows'
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: >
+          php "vendor/bin/phpunit" -c ${{ steps.phpunit_config.outputs.FILE }} --no-coverage
+          --group Windows
+
+      - name: 'PHPUnit: run select tests in CBF mode'
+        run: >
+          php "vendor/bin/phpunit" -c ${{ steps.phpunit_config.outputs.FILE }} --no-coverage
+          --group CBF --exclude-group nothing
+        env:
+          PHP_CODESNIFFER_CBF: '1'
+
+      # Note: The code style check is run as an integration test.
+      - name: 'PHPCS: check code style without cache, no parallel'
+        run: php "bin/phpcs" --no-cache --parallel=1
