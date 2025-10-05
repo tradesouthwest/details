@@ -1,43 +1,20 @@
-name: CI
+name: PHPCS
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: [push]
 
 jobs:
-
-  phpunit:
-    name: PHPUnit
+  build-and-test:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        php-version:
-          - "7.4"
-          - "8.0"
-          - "8.1"
-          - "8.2"
-        dependency-versions:
-          - "lowest"
-          - "highest"
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Composer install
+        uses: php-actions/composer@v6
+
+      - name: PHP Code Sniffer
+        uses: php-actions/phpcs@v1
         with:
-          php-version: ${{ matrix.php-version }}
-          coverage: none
-
-      - name: Install composer dependencies
-        uses: ramsey/composer-install@v2
-        with:
-          dependency-versions: ${{ matrix.dependency-versions }}
-
-      - name: Run PHPUnit
-        run: vendor/bin/phpunit tests
+          php_version: 8.1
+          path: src/
+          standard: phpcs.xml
