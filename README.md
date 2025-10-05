@@ -51,6 +51,7 @@ Open for contributions.
 thanks http://jqueryte.com/ - jQuery TE
 thanks http://www.daveismyname.com PHP Pagination Class
 thanks Twitter Bootstrap 
+https://megalinter.io/latest/descriptors/php_phpcs/
 
 ## License
 Licensed under MIT License (MIT). 
