@@ -1,20 +1,26 @@
 name: PHPCS
-
-on: [push]
-
-jobs:
-  build-and-test:
+on: push
+jobs: 
+  build:
     runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Composer install
-        uses: php-actions/composer@v6
-
-      - name: PHP Code Sniffer
-        uses: php-actions/phpcs@v1
+    steps: 
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3
         with:
-          php_version: 8.1
-          path: /
-          standard: phpcs.xml
+          node-version: '18.x'
+      - run: npm install
+      - run: npm run build 
+  test: 
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install
+      - run: npm test
