@@ -1,24 +1,43 @@
-    name: PHP CodeSniffer
+name: CI
 
-    on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
-    jobs:
-      phpcs:
-        runs-on: ubuntu-latest
+jobs:
 
-        steps:
-          - name: Checkout Code
-            uses: actions/checkout@v4
+  phpunit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
 
-          - name: Setup PHP
-            uses: shivammathur/setup-php@v2
-            with:
-              php-version: '8.2' # Specify your required PHP version
-              extensions: mbstring, xml # Add any necessary extensions
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+          - "8.2"
+        dependency-versions:
+          - "lowest"
+          - "highest"
 
-          - name: Install Composer Dependencies
-            run: composer install --no-interaction --no-progress --prefer-dist
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-          - name: Run PHP_CodeSniffer
-            run: vendor/bin/phpcs --standard=PSR12 --ignore=vendor/,tests/ --report=full .
-            # Customize --standard, --ignore, and the target directory as needed
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+
+      - name: Install composer dependencies
+        uses: ramsey/composer-install@v2
+        with:
+          dependency-versions: ${{ matrix.dependency-versions }}
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit tests
