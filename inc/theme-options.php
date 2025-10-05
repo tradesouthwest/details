@@ -26,7 +26,7 @@ $title= "TSW-Details Admin Control Panel";
     <div class="row">
 
         <header class="col-md-12 text-center">
-        <h3 class="page-header">Admin Control Panel</h3>
+        <h3 class="page-header">Admin Control Panel <small><?php echo $dver; ?></small></h3>
  <p>Admin only page - Welcome <?php echo $_SESSION['firstname']; ?> <a href='../lib/user/logout.php' class="btn btn-default btn-sm">Logout</a> &nbsp; | &nbsp;  <?php if( isset( $_SESSION['user_session']) ) { esc("You are safely logged in "); } ?></p>
         </header>
 
